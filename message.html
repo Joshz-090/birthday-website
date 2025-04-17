@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Messages for the Idiot</title>
+    <link rel="stylesheet" href="message.css">
+</head>
+
+<body>
+    <h1>Birthday Wishes for the Idiot</h1>
+
+    <div class="message-container">
+        <div class="message">
+            <div class="sender">From Your Best Jema</div>
+            <div class="message-text">
+                Happy Birthday, you big dummy! 🎉
+                I can't believe you've survived this long with that tiny brain 🧠 of yours.
+                በኔ እጅ ስለምትሞት ቡዙ ኖራለው ብለ አታስብ 😜
+            </div>
+            <div class="date">Posted today</div>
+        </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+        <div class="quiz-title">Birthday Quiz Challenge!</div>
+
+        <div class="question">1. Who is the most idiot?</div>
+        <div class="options" id="q1-options">
+            <label class="option">
+                <input type="radio" name="q1" value="a"> a) firew
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="b"> b) tame
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="c"> c) fuad
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="d"> d) fira
+            </label>
+        </div>
+        <div class="result" id="q1-result"></div>
+
+        <div class="question">2. Who is melata?</div>
+        <div class="options" id="q2-options">
+            <label class="option">
+                <input type="checkbox" name="q2" value="a"> a) melke
+            </label>
+            <label class="option">
+                <input type="checkbox" name="q2" value="b"> b) fira
+            </label>
+            <label class="option">
+                <input type="checkbox" name="q2" value="c"> c) eyasu
+            </label>
+            <label class="option">
+                <input type="checkbox" name="q2" value="d"> d) frew
+            </label>
+        </div>
+        <div class="result" id="q2-result"></div>
+
+        <button class="submit-btn" id="submit-btn">Check Answers</button>
+    </div>
+
+    <a href="index.html" class="back-btn">Back to Birthday Page 🎈</a>
+
+    <script>
+        // Create confetti effect when clicking messages
+        document.querySelectorAll('.message').forEach(message => {
+            message.addEventListener('click', function (e) {
+                createConfetti(e.clientX, e.clientY);
+            });
+        });
+
+        function createConfetti(x, y) {
+            const colors = ['#ff4081', '#00bcd4', '#ffeb3b', '#4caf50', '#9c27b0'];
+            const confettiCount = 15;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${x}px`;
+                confetti.style.top = `${y}px`;
+
+                document.body.appendChild(confetti);
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 3 + Math.random() * 3;
+                const rotation = Math.random() * 360;
+
+                let posX = x;
+                let posY = y;
+                let opacity = 1;
+
+                const animate = () => {
+                    posX += Math.cos(angle) * velocity;
+                    posY += Math.sin(angle) * velocity + 0.5; // gravity
+                    opacity -= 0.02;
+
+                    confetti.style.transform = `translate(${posX - x}px, ${posY - y}px) rotate(${rotation}deg)`;
+                    confetti.style.opacity = opacity;
+
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        confetti.remove();
+                    }
+                };
+
+                requestAnimationFrame(animate);
+            }
+        }
+
+        // Make messages appear one by one
+        document.addEventListener('DOMContentLoaded', () => {
+            const messages = document.querySelectorAll('.message');
+            messages.forEach(msg => msg.style.opacity = 0);
+        });
+
+        // Quiz functionality
+        document.getElementById('submit-btn').addEventListener('click', function () {
+            // Check question 1 (single answer)
+            const q1Selected = document.querySelector('input[name="q1"]:checked');
+            const q1Result = document.getElementById('q1-result');
+
+            if (q1Selected) {
+                if (q1Selected.value === 'd') {
+                    q1Result.textContent = "Like I said, you are always a big idiot! HBD 🎉";
+                    q1Result.className = "result correct";
+                    createConfetti(q1Result.getBoundingClientRect().left + 50, q1Result.getBoundingClientRect().top);
+                } else {
+                    q1Result.textContent = "Wow, wow, wow, like I always say, you are a real big idiot and zero brain! 😂";
+                    q1Result.className = "result incorrect";
+                }
+            } else {
+                q1Result.textContent = "Please select an answer!";
+                q1Result.className = "result incorrect";
+            }
+
+            // Check question 2 (multiple answers)
+            const q2Selected = Array.from(document.querySelectorAll('input[name="q2"]:checked')).map(el => el.value);
+            const q2Result = document.getElementById('q2-result');
+
+            if (q2Selected.length > 0) {
+                const correctAnswers = ['b', 'd'];
+                const isCorrect = q2Selected.length === correctAnswers.length &&
+                    q2Selected.every(val => correctAnswers.includes(val));
+
+                if (isCorrect) {
+                    q2Result.textContent = "Correct! Both fira and frew are melata! 🎉";
+                    q2Result.className = "result correct";
+                    createConfetti(q2Result.getBoundingClientRect().left + 50, q2Result.getBoundingClientRect().top);
+                } else {
+                    q2Result.textContent = "Wow, wow, wow, like I always say, you are a real big idiot and zero brain!";
+                    q2Result.className = "result incorrect";
+                }
+            } else {
+                q2Result.textContent = "Please select at least one answer!";
+                q2Result.className = "result incorrect";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

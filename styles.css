@@ -1,0 +1,202 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    font-family: 'Comic Sans MS', cursive, 'Arial Unicode MS', sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin: 20px 10px 10px;
+    color: #ff4081;
+    animation: pop 1s ease-in-out infinite alternate;
+}
+
+p {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #333;
+    margin: 10px 15px;
+}
+
+.photo-container {
+    position: relative;
+    width: 90%;
+    max-width: 320px;
+    margin: 15px auto;
+}
+
+img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #ff4081;
+    animation: float 3s ease-in-out infinite;
+}
+
+.amharic-text {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    color: #5a2a0a;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.music-container {
+    width: 90%;
+    max-width: 350px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    animation: pulse 2s infinite alternate;
+}
+
+audio {
+    width: 100%;
+}
+
+a {
+    display: inline-block;
+    margin: 25px auto;
+    padding: 12px 24px;
+    background: #ff4081;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+a:hover {
+    background: #e73370;
+    transform: translateY(-3px);
+}
+
+#lyrics-container {
+    margin: 15px auto;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideIn 1s ease-out;
+    overflow: hidden;
+}
+
+#lyrics {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #d23369;
+    font-weight: bold;
+    white-space: pre-line;
+    animation: textColorChange 10s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+    }
+
+    100% {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textColorChange {
+    0% {
+        color: #d23369;
+    }
+
+    25% {
+        color: #9c27b0;
+    }
+
+    50% {
+        color: #3f51b5;
+    }
+
+    75% {
+        color: #009688;
+    }
+
+    100% {
+        color: #d23369;
+    }
+}
+
+@keyframes dance {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(-5px) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateX(5px) rotate(2deg);
+    }
+
+    75% {
+        transform: translateX(-5px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+.dancing {
+    animation: dance 0.5s infinite;
+}

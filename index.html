@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Idiot! 🎉</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Happy Birthday, You Big Idiot! �</h1>
+    <p>You're another year older, still just as dumb! But I guess I still heat you. Here's to another year of chaos 😂
+    </p>
+
+    <!-- Friend's photo with Amharic text -->
+    <div class="photo-container">
+        <img src="friend_photo.jpg" alt="Birthday Friend" id="birthday-photo">
+        <div class="amharic-text">ካሉኝ ፎቶዎች ይሔ ስለሚሻል �ይሄንን መረጥኩኝ!!</div>
+    </div>
+
+    <!-- Lyrics container -->
+    <div id="lyrics-container">
+        <div id="lyrics">Lyrics will appear here as the song plays...
+            <br>
+            zm ble say prees play button
+            <br>
+            👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+        </div>
+    </div>
+
+    <!-- Music container with dancing effect -->
+    <div class="music-container" id="music-box">
+        <audio id="birthday-audio" controls autoplay loop>
+            <source src="Ugh, It’s Your Birthday_!_.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <a href="message.html">Go to Message Board 📬</a>
+
+    <script>
+        const audio = document.getElementById('birthday-audio');
+        const lyricsElement = document.getElementById('lyrics');
+        const musicBox = document.getElementById('music-box');
+        const photo = document.getElementById('birthday-photo');
+
+        // Lyrics data with timings (in seconds)
+        const lyrics = [
+            { start: 0, end: 20, text: '🎂 Ugh, It\'s Your Birthday?!......😄\n\n(Eyu  (jodh-z) Remix🎹)\n\nUgh, it\'s your birthday? 🎉 What a pain, 😩\nAnother year of zero brain 🧠❌.\nI\'d send a gift 🎁—but let\'s be real, 🙄\nYou\'re lucky I even feel. 😜' },
+            { start: 20, end: 32, text: 'Wake up 🌞, take a shower 🚿, wash your face, 🧼\nTry looking human—just in case. 🙃\nSay a prayer 🙏, fix your hair 💇‍♂️,\nLord knows your brain 🧠 needs some repair. 🛠️' },
+            { start: 32, end: 43, text: '[----Instrumental intro 🎶----] ' },
+            { start: 43, end: 57, text: 'I thought real hard 🤔: what should I send?\nA gift for you, my "dearest" friend. 💝\nI almost sent a human heart 💓,\nBut wow—it\'s pricey, off the chart! 💸' },
+            { start: 57, end: 69, text: 'So stop your dreaming 💭, you tech-obsessed freak 🤖,\nYou want a PC? 💻 Bro, you\'re weak. 💪\nBuy a heart first ❤️, then we\'ll talk,\nAnd maybe learn how brains 🧠 can walk. 🚶' },
+            { start: 69, end: 82, text: 'You\'re loud 🔊, you\'re wild 🦁, you\'re rarely right 🤔,\nBut fine. Enjoy your little night 🌙.\nHappy birthday 🎂, go be weird 🤪—\nYou\'re still the idiot we all feared. 🎉💀' },
+            { start: 82, end: 96, text: 'Ugh, it\'s your birthday? 🎉 What a pain 😩,\nAnother year of zero brain 🧠❌.\nI\'d send a gift 🎁—but let\'s be real 🤷‍♂️,\nYou\'re lucky I even feel ❤️.' },
+            { start: 96, end: 102, text: '[----Instrumental intro 🎶----]' },
+            { start: 102, end: 117, text: 'You\'re loud 🔊, you\'re wild 🦁, you\'re rarely right 🤔,\nBut fine. Enjoy your little night 🌙.\nHappy birthday 🎂, go be weird 🤪—\nYou\'re still the idiot we all feared. 🎉💀' },
+            { start: 117, end: 134, text: 'just .... HBD 🎈.' },
+            { start: 135, end: 142, text: 'hhhhhhhhhhhhhh\nkkkkkkkkkkkkkk.......😄😄😄😄😄😄' }
+        ];
+
+        // Update lyrics based on current time
+        audio.addEventListener('timeupdate', function () {
+            const currentTime = audio.currentTime;
+            let currentLyric = 'Lyrics will appear here as the song plays...';
+
+            // Find the current lyric based on time
+            for (let i = 0; i < lyrics.length; i++) {
+                if (currentTime >= lyrics[i].start && currentTime < lyrics[i].end) {
+                    currentLyric = lyrics[i].text;
+                    break;
+                }
+            }
+
+            lyricsElement.textContent = currentLyric;
+        });
+
+        // Add dancing effects when music plays
+        audio.addEventListener('play', function () {
+            musicBox.classList.add('dancing');
+            photo.style.animation = 'float 2s ease-in-out infinite';
+        });
+
+        audio.addEventListener('pause', function () {
+            musicBox.classList.remove('dancing');
+            photo.style.animation = 'none';
+        });
+
+        // Reset lyrics when song loops
+        audio.addEventListener('ended', function () {
+            lyricsElement.textContent = 'Lyrics will appear here as the song plays...';
+        });
+
+        // Make photo dance on click
+        photo.addEventListener('click', function () {
+            photo.style.animation = 'none';
+            void photo.offsetWidth; // Trigger reflow
+            photo.style.animation = 'float 0.8s ease-in-out infinite';
+        });
+    </script>
+</body>
+
+</html>
