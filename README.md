@@ -30,4 +30,4 @@ It’s a simple, funny way to make someone’s birthday a little brighter withou
 Created by Eyassu Zerihun (Josh-z). as a fun birthday gift to a dear friend.  
 No payment involved, just pure fun and humor.  
 
-Happy Birthday, you big dummy! 😜🎂
+Happy Birthday, you big dummy! 😜🎂(Thank you for your visitation)
