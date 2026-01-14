@@ -10,7 +10,7 @@ Welcome to the **Birthday Website** project! This is a fun, humorous birthday gi
 - Colorful Animations: Surprise animations that appear when you interact with the page.
 - Confetti Effect: Because why not celebrate with confetti when clicking the messages? 🎉
 
-## 🎉 How to Use It
+## 🎉 How to Use It 
 1. Visit the website: https://Joshz-090.github.io/birthday-website  
 2. Enjoy the funny birthday message and quiz, and get ready for the celebratory vibes!
 3. Don’t forget to laugh and enjoy the birthday fun!
